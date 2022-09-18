@@ -1,2 +1,3 @@
 # hackzurich2022-emotion
-Emotion detection using ML for HackZurich 2022 project
+
+ML algorithm for emotion detection for HackZurich 2022 project
