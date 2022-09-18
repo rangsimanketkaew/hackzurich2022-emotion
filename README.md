@@ -12,11 +12,32 @@ We trained a model using compute engine on Google cloud provided by Google Zuric
 
 ## Deployment
 
-![alt text](img/hz2022-gce-engine.png)
+Create a compute engine
 
 ```sh
-gcloud config set project PROJECT_ID
-gcloud run deploy
+MY_INSTANCE_NAME="my-app-instance"
+ZONE=us-central1-a
+
+gcloud compute instances create $MY_INSTANCE_NAME \
+    --image-family=debian-10 \
+    --image-project=debian-cloud \
+    --machine-type=g1-small \
+    --scopes userinfo-email,cloud-platform \
+    --metadata-from-file startup-script=startup-script.sh \
+    --zone $ZONE \
+    --tags http-server
 ```
 
+![alt text](img/hz2022-gce-engine.png)
+
+1. Enable API
+2. Open app in Google Console Run
+3. Run
+    ```sh
+    gcloud config set project PROJECT_ID
+    gcloud run deploy
+    ```
+
 ![alt text](img/hz2022-deploy.png)
+
+Go to the external link
